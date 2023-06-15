@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "./";
+
+service AuthService {
+  rpc Register(RegisterRequest) returns (RegisterResponse) {}
+  rpc Login(LoginRequest) returns (LoginResponse) {}
+  rpc Activate(ActivateRequest) returns (ActivateResponse) {}
+  rpc Authenticate(AuthenticateRequest) returns (AuthenticateResponse) {}
+  rpc Authorize(AuthorizeRequest) returns (AuthorizeResponse) {}
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse){}
+}
+
+message RegisterRequest {
+  string name = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message RegisterResponse {
+  string  name = 1;
+  string email = 2;
+  bool activated = 3;
+  int64 money = 4;
+}
+
+message LoginRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  string token = 1;
+}
+
+message ActivateRequest {
+  string token = 1;
+}
+
+message ActivateResponse {
+  string  name = 1;
+  string email = 2;
+  bool activated = 3;
+  int64 money = 4;
+}
+
+message AuthenticateRequest {
+  string token = 1;
+}
+
+message AuthenticateResponse {
+  int64 id = 1;
+  bool activated = 2;
+  int64 money = 3;
+}
+
+message AuthorizeRequest {
+  int64 id = 1;
+  string role = 2;
+}
+
+message AuthorizeResponse {
+  string  msg = 1;
+}
+
+message DeleteUserRequest {
+  int64 id = 1;
+}
+
+message DeleteUserResponse {
+  string message = 1;
+}
