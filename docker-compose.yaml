@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  clothing-store-auth:
+    build: clothing-store-auth
+    restart: unless-stopped
+    ports:
+      - "8082:8082"
+    networks:
+      - backend
+  clothing-store-brands:
+    build: clothing-store-brands
+    restart: unless-stopped
+    ports:
+      - "8084:8084"
+    networks:
+      - backend
+  clothing-store-clothes:
+    build: clothing-store-clothes
+    restart: unless-stopped
+    ports:
+      - "8083:8083"
+    networks:
+      - backend
+  clothe-shop:
+    build: clothe-shop
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    networks:
+      - backend
+    depends_on:
+      - clothing-store-auth
+      - clothing-store-brands
+      - clothing-store-clothes
+
+networks:
+  backend:
+    driver: bridge
