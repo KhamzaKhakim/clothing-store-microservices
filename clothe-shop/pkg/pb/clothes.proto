@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "./";
+
+service ClothesService {
+  rpc CreateClothe(Clothe) returns (Clothe) {}
+  rpc ShowClothe(ShowClotheRequest) returns (Clothe) {}
+  rpc ListClothe(ListClotheRequest) returns (ClotheList){}
+  rpc UpdateClothe(UpdateClotheRequest) returns (Clothe) {}
+  rpc DeleteClothe(DeleteClotheRequest) returns (Clothe) {}
+
+}
+
+message ListClotheRequest {
+  string name = 1;
+  string brand = 2;
+  int64 price_max = 3;
+  int64 price_min = 4;
+  repeated string sizes = 5;
+  string color = 6;
+  string type = 7;
+  string sex = 8;
+  Filter filter = 9;
+}
+
+message Filter {
+  int64 page = 1;
+  int64 page_size = 2;
+  string sort = 3;
+  repeated string sort_safe_list = 4;
+}
+
+message Clothe {
+  int64 id = 9;
+  string name = 1;
+  int64 price = 2;
+  string brand = 3;
+  string color = 4;
+  repeated string sizes = 5;
+  string sex = 6;
+  string type = 7;
+  string image_url = 8;
+}
+
+message ClotheList {
+  repeated Clothe clothe_list = 1;
+}
+
+message ShowClotheRequest {
+  int64 id = 1;
+}
+
+message UpdateClotheRequest {
+  int64 id = 1;
+  Clothe clothe = 2;
+}
+
+message DeleteClotheRequest {
+  int64 id = 1;
+}
+
+message DeleteClotheResponse {
+  string msg = 1;
+}
