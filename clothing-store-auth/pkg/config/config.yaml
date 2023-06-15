@@ -1,0 +1,13 @@
+port: 8082
+
+db:
+  dsn: postgres://vwgbmyqw:BYa0shsNVMugl9gVBKBghNuQ5fMZhzjI@mouse.db.elephantsql.com/vwgbmyqw
+  maxOpenConns: 25
+  maxIdleConns: 25
+  maxIdleTime: 15m
+smtp:
+  host: sandbox.smtp.mailtrap.io
+  port: 2525
+  username: 95df3a31032729
+  password: 9130d7d47ebebd
+  sender: noreply@clotheshop.com
