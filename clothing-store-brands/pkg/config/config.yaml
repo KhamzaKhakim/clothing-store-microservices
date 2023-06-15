@@ -1,0 +1,7 @@
+port: 8084
+
+db:
+  dsn: postgres://vwgbmyqw:BYa0shsNVMugl9gVBKBghNuQ5fMZhzjI@mouse.db.elephantsql.com/vwgbmyqw
+  maxOpenConns: 25
+  maxIdleConns: 25
+  maxIdleTime: 15m

@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "./";
+
+service BrandsService {
+  rpc CreateBrand(Brand) returns (Brand) {}
+  rpc ShowBrand(ShowBrandRequest) returns (Brand) {}
+  rpc ListBrand(ListBrandRequest) returns (BrandList){}
+  rpc UpdateBrand(UpdateBrandRequest) returns (Brand) {}
+  rpc DeleteBrand(DeleteBrandRequest) returns (Brand) {}
+
+}
+
+message ListBrandRequest {}
+
+
+message Brand {
+  int64 id = 1;
+  string name = 2;
+  string country = 3;
+  string description = 4;
+  string image_url = 5;
+}
+
+message BrandList {
+  repeated Brand brand_list = 1;
+}
+
+message ShowBrandRequest {
+  int64 id = 1;
+}
+
+message UpdateBrandRequest {
+  int64 id = 1;
+  Brand brand = 2;
+}
+
+message DeleteBrandRequest {
+  int64 id = 1;
+}
+
+message DeleteBrandResponse {
+  string msg = 1;
+}
